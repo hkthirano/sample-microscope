@@ -1,1 +1,0 @@
-- [Display .SVS images using OpenSeaDragon in a React.js and Flask application](https://medium.com/@Chitturi_Teja/display-svs-images-using-openseadragon-in-a-react-js-and-flask-application-ad5e35aa125)
