@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <script src="https://unpkg.com/zarr/zarr.umd.js"></script>
+    <script>
+        async function main() {
+            // azure storage static website
+            // const store = new zarr.HTTPStore(
+            //     "https://<StorageName>.z11.web.core.windows.net/<FileName>.zarr");
+
+            // azure storage private container
+            const saseky =
+                "FolderLevelSaskey";
+            const store = new zarr.HTTPStore(
+                "https://<StorageName>.blob.core.windows.net/<ContainerName>/<FileName>.zarr?" +
+                saseky
+            );
+
+            const z = await zarr.openArray({
+                store: store,
+                mode: "r",
+            });
+            console.log(z);
+
+            // z[0, 0, 0, :256, :256]
+            console.log(
+                await z.get([0, 0, 0, zarr.slice(null, 256), zarr.slice(null, 256)])
+            );
+        }
+
+        main();
+    </script>
+</body>
+
+</html>
